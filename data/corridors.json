@@ -1,0 +1,78 @@
+{
+  "fxReference": {
+    "KES_TO_ETB": 0.96,
+    "ETB_TO_KES": 1.0417,
+    "lastUpdated": "2026-11-27T16:00:00Z",
+    "source": "PAPSS Direct Reference Rate (NBE / CBK)"
+  },
+  "corridors": [
+    {
+      "id": "KE-ET",
+      "label": "Kenya → Ethiopia (Merchant Collection)",
+      "payerCountry": "Kenya",
+      "payerCurrency": "KES",
+      "payerWallet": "M-Pesa (Safaricom)",
+      "merchantCountry": "Ethiopia",
+      "merchantCurrency": "ETB",
+      "merchantPayout": "Commercial Bank / Telebirr Merchant",
+      "papssFeePct": 0.45,
+      "partnerFeePct": 0.85,
+      "platformMarginPct": 0.70,
+      "legacySwiftFeePct": 11.5,
+      "legacySettlementTime": "2–4 Business Days",
+      "papssSettlementTime": "< 3 Minutes",
+      "regulatoryNote": "Inbound export/service proceeds settled in ETB via PAPSS-participating Ethiopian commercial bank under NBE FX rules."
+    },
+    {
+      "id": "ET-KE",
+      "label": "Ethiopia → Kenya (Licensed B2B Trade)",
+      "payerCountry": "Ethiopia",
+      "payerCurrency": "ETB",
+      "payerWallet": "Telebirr / Bank Account",
+      "merchantCountry": "Kenya",
+      "merchantCurrency": "KES",
+      "merchantPayout": "M-Pesa Till / Kenyan Commercial Bank",
+      "papssFeePct": 0.45,
+      "partnerFeePct": 0.95,
+      "platformMarginPct": 0.70,
+      "legacySwiftFeePct": 12.8,
+      "legacySettlementTime": "3–5 Business Days",
+      "papssSettlementTime": "< 4 Minutes",
+      "regulatoryNote": "Requires approved trade invoice / NBE FX allocation; settled directly in KES via CBK-linked PAPSS participant bank."
+    }
+  ],
+  "licensingRoadmap": [
+    {
+      "country": "Ethiopia",
+      "scheme": "Telebirr / Local Banks",
+      "role": "Payout & Licensed Settlement Bank",
+      "licenseStatus": "Partner-Led (No new license needed for orchestration)",
+      "estimatedOnboardingCost": "$0 (Enterprise Partner Rail)",
+      "timeline": "Weeks 1–4 (Immersion)"
+    },
+    {
+      "country": "Kenya",
+      "scheme": "M-Pesa / Airtel Money",
+      "role": "Licensed PSP Collection Partner",
+      "licenseStatus": "CBK-Licensed PSP Counterparty",
+      "estimatedOnboardingCost": "$2,500 – $5,000 (Sandbox/KYB & Integration)",
+      "timeline": "Weeks 2–4 (Immersion)"
+    },
+    {
+      "country": "Uganda",
+      "scheme": "MTN MoMo / Airtel",
+      "role": "Phase 2 East Africa Expansion",
+      "licenseStatus": "BoU-Licensed Aggregator Partner",
+      "estimatedOnboardingCost": "$4,000 – $7,500",
+      "timeline": "Post-Pilot Month 1"
+    },
+    {
+      "country": "Ghana & Nigeria",
+      "scheme": "MTN MoMo / Bank Wallets",
+      "role": "PAPSS Core West Africa Hub",
+      "licenseStatus": "Licensed Local Switch + PAPSS Direct",
+      "estimatedOnboardingCost": "$8,000 – $15,000",
+      "timeline": "Post-Pilot Months 2–3"
+    }
+  ]
+}
