@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>ET-PayBridge | Pan-African Non-Airline Payment Orchestration PoC</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <header class="topbar">
+    <div class="container topbar-inner">
+      <div>
+        <span class="badge">KAMA × Ethiopian Airlines Challenge (Track 1A)</span>
+        <h1>ET-PayBridge</h1>
+        <p class="subtitle">Local Mobile-Money Collection + PAPSS Local-Currency Settlement (Non-Airline Commerce)</p>
+      </div>
+      <div class="scope-pill">
+        <strong>Scope Guardrail:</strong> Ticket Sales Excluded • Partner-Led Licensing
+      </div>
+    </div>
+  </header>
+
+  <main class="container">
+    <!-- KPI Comparison Banner -->
+    <section class="kpi-grid" id="kpiBanner">
+      <div class="card kpi">
+        <span class="kpi-label">All-In Pilot Fee</span>
+        <strong class="kpi-value accent" id="kpiPilotFee">2.00%</strong>
+        <small id="kpiLegacyFee">vs. 11.5% Legacy USD/SWIFT Route</small>
+      </div>
+      <div class="card kpi">
+        <span class="kpi-label">End-to-End Settlement</span>
+        <strong class="kpi-value accent" id="kpiPilotTime">&lt; 3 Minutes</strong>
+        <small id="kpiLegacyTime">vs. 2–4 Business Days Legacy</small>
+      </div>
+      <div class="card kpi">
+        <span class="kpi-label">USD Intermediation</span>
+        <strong class="kpi-value">0.00 USD</strong>
+        <small>Direct Local FX via PAPSS Central Bank Rails</small>
+      </div>
+      <div class="card kpi">
+        <span class="kpi-label">Pilot Corridor</span>
+        <strong class="kpi-value" id="kpiCorridorCode">KE → ET</strong>
+        <small>2-Country Non-Airline Merchant Scope</small>
+      </div>
+    </section>
+
+    <div class="two-col">
+      <!-- Interactive Checkout & Settlement Simulator -->
+      <section class="card">
+        <h2>1. Live Cross-Border Payment Simulator</h2>
+        <p class="muted">Simulate a non-airline merchant payment from mobile money through PAPSS local-currency clearing.</p>
+
+        <form id="paymentForm">
+          <label>
+            Corridor
+            <select id="corridorSelect"></select>
+          </label>
+
+          <label>
+            Merchant Business Name (Non-Airline)
+            <input type="text" id="merchantName" value="Habesha Specialty Coffee Exporters PLC" required />
+          </label>
+
+          <label>
+            Invoice Reference
+            <input type="text" id="invoiceRef" value="INV-2026-0842" required />
+          </label>
+
+          <label>
+            <span id="amountLabel">Customer Pays (KES)</span>
+            <input type="number" id="amountInput" value="25000" min="100" step="100" required />
+          </label>
+
+          <div class="quote-box" id="quoteBox">
+            <div><span>FX Rate (No USD Hop):</span> <strong id="qFx">—</strong></div>
+            <div><span>Total Fee (<span id="qFeePct">—</span>):</span> <strong id="qFee">—</strong></div>
+            <div><span>Legacy SWIFT Cost:</span> <strong id="qLegacy" class="warn">—</strong></div>
+            <div class="total-row"><span>Merchant Receives:</span> <strong id="qNet">—</strong></div>
+          </div>
+
+          <p class="reg-note" id="regNote"></p>
+
+          <button type="submit" class="btn-primary" id="submitBtn">Execute Simulated Payment</button>
+        </form>
+
+        <!-- Live State Machine Stepper -->
+        <div class="stepper" id="stepper">
+          <div class="step" data-step="1">1. Mobile Money Debit</div>
+          <div class="step" data-step="2">2. Licensed Partner Escrow</div>
+          <div class="step" data-step="3">3. PAPSS FX Clearing</div>
+          <div class="step" data-step="4">4. Local Merchant Payout</div>
+        </div>
+      </section>
+
+      <!-- Real-Time Reconciliation Ledger -->
+      <section class="card">
+        <div class="ledger-header">
+          <div>
+            <h2>2. Idempotent Reconciliation Ledger</h2>
+            <p class="muted">Tracks multi-leg state transitions across mobile wallet, PSP partner, and PAPSS.</p>
+          </div>
+          <button type="button" class="btn-secondary" id="clearLedgerBtn">Reset Demo Ledger</button>
+        </div>
+
+        <div class="table-wrap">
+          <table>
+            <thead>
+              <tr>
+                <th>Tx ID / Invoice</th>
+                <th>Corridor</th>
+                <th>Paid</th>
+                <th>Settled</th>
+                <th>Status</th>
+              </tr>
+            </thead>
+            <tbody id="ledgerBody"></tbody>
+          </table>
+        </div>
+      </section>
+    </div>
+
+    <!-- Country-by-Country Costed Licensing Roadmap -->
+    <section class="card">
+      <h2>3. Costed Country-by-Country Licensing & Partner Path</h2>
+      <p class="muted">Deliverable 4 of the 12-week pilot: scaling from 2 pilot countries across Ethiopian Airlines' 18-country footprint via licensed counterparties.</p>
+      <div class="table-wrap">
+        <table>
+          <thead>
+            <tr>
+              <th>Country</th>
+              <th>Mobile Money / Rails</th>
+              <th>Partner Role</th>
+              <th>Regulatory / Licensing Model</th>
+              <th>Est. Onboarding Cost</th>
+              <th>Target Window</th>
+            </tr>
+          </thead>
+          <tbody id="roadmapBody"></tbody>
+        </table>
+      </div>
+    </section>
+  </main>
+
+  <script src="app.js"></script>
+</body>
+</html>
